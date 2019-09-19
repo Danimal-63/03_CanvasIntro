@@ -42,7 +42,7 @@ context.fillRect(NEW_OBJECT.x,NEW_OBJECT.y,20,20);
 }
 // moves the object in a diagonal resetting when it hits the border
 function HandleNewObjectMovement() {
-  NEW_OBJECT.x+=1;
+  NEW_OBJECT.x+=2;
   NEW_OBJECT.y+=1;
   if (NEW_OBJECT.x>GAME.canvas.width) {
     NEW_OBJECT.x=0;
