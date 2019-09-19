@@ -36,15 +36,21 @@ function handleShipAnimation() {
     SPACE_SHIP.y = 300;
   }
 }
-
+//creats and object of size hieght 20 and length 20 and NEW_OBJECT.x,NEW_OBJECT.y,20,20
 function RenderNewObject(context) {
-  // Draw a new item here using the canvas 'context' variable
+context.fillRect(NEW_OBJECT.x,NEW_OBJECT.y,20,20);
+}
+// moves the object in a diagonal resetting when it hits the border
+function HandleNewObjectMovement() {
+  NEW_OBJECT.x+=1;
+  NEW_OBJECT.y+=1;
+  if (NEW_OBJECT.x>GAME.canvas.width) {
+    NEW_OBJECT.x=0;
+  }else if (NEW_OBJECT.y>GAME.canvas.height) {
+    NEW_OBJECT.y=0;
+  }
 }
 
-function HandleNewObjectMovement() {
-  //NEW_OBJECT.x += 1;
-  //NEW_OBJECT.y += 1;
-}
 
 function runGame() {
   var canvas = document.getElementById('mainCanvas');
@@ -61,6 +67,7 @@ function runGame() {
     // 3 - Draw new items
     RenderSpaceship(context);
     RenderNewObject(context);
+    RenderNewObject(context);
 
   } else {
     context.font = "30px Arial";
@@ -68,5 +75,7 @@ function runGame() {
   }
   window.requestAnimationFrame(runGame);
 }
+
+window.requestAnimationFrame(HandleNewObjectMovement);
 
 window.requestAnimationFrame(runGame);
